@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+<title>Login - separate messages</title>
+<link href="./css/styles.css" rel="stylesheet" type="text/css"/>
+</h:head>
+<h:body>
+<h1 class="title">Login - separate messages</h1>
+
+<h:form styleClass="formTable" id="formID1">
+
+	<h:panelGrid columns="3">
+		User name: <h:inputText value="#{lcsm.name}" 
+								id="name"
+								required="true"
+								requiredMessage="Please enter your Name">
+		</h:inputText>
+		<h:message for="name"/>
+		
+		Password: <h:inputSecret value="#{lcsm.password}"
+								 id="password"
+								 required="true"
+								 requiredMessage="Please enter your Password"
+								 validatorMessage="Password must be at least 6 characters">
+			<f:validateLength minimum="6"/>
+		</h:inputSecret>
+		<h:message for="password"/>
+		
+		Repeat password: <h:inputSecret value="#{lcsm.passwordRepeat}"
+										id="repeatPassword"
+										required="true"
+										requiredMessage="Please repeat your Password">
+		</h:inputSecret>
+		<h:message for="repeatPassword"/>
+		
+		<h:commandButton value="Enter" action="#{lcsm.enter2}"/>
+	</h:panelGrid>
+</h:form>
+
+</h:body></html>

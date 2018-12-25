@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+<title>#{award.title}</title>
+<link href="./css/styles.css" rel="stylesheet" type="text/css"/>
+</h:head>
+<h:body>
+<h1 class="title">#{award.title}</h1>
+
+<f:view locale="#{ac.location}">
+<h:form>
+
+	<h:panelGrid columns="3" styleClass="formTable">
+		#{award.namePrompt} <h:inputText value="#{ac.name}" 
+								id="name"
+								required="true"
+								requiredMessage="#{award.requiredMessage}">
+		</h:inputText>
+		<h:message for="name"/>
+		
+		<h:commandButton value="#{award.button}" action="#{ac.go}"/>
+	</h:panelGrid>
+</h:form>
+</f:view>
+
+	<br/><br/>
+<h:form>
+	<h:commandButton value="English" actionListener="#{ac.setToEn}" immediate="true"/>
+	<h:commandButton value="Macedonian" actionListener="#{ac.setToMk}" immediate="true"/>
+</h:form>
+	
+</h:body></html>

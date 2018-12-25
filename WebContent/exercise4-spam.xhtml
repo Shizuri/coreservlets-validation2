@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:mcv="http://myfaces.apache.org/commons/validators">
+<h:head>
+<title>Spam</title>
+<link href="./css/styles.css" rel="stylesheet" type="text/css"/>
+</h:head>
+<h:body>
+<h1 class="title">Spam generator</h1>
+
+<h:form id="formID1">
+
+	<h:panelGrid columns="3" styleClass="formTable">
+		Email: <h:inputText value="#{spam.email}" 
+								id="email"
+								required="true"
+								requiredMessage="Please enter your Email">
+								<mcv:validateEmail/>
+		</h:inputText>
+		<h:message for="email"/>
+		
+		URL1: <h:inputText value="#{spam.url1}"
+						   id="url1"
+						   required="true"
+						   requiredMessage="Please enter the first URL"
+						   validatorMessage="This is not a valid URL">
+						   <mcv:validateUrl/>
+		
+		</h:inputText>
+		<h:message for="url1"/>
+		
+		URL2: <h:inputText value="#{spam.url2}"
+						   id="url2"
+						   required="true"
+						   requiredMessage="Please enter the second URL">
+						   <mcv:validateUrl/>
+						   <mcv:validateCompareTo operator="ne" forId="url1" message="Must not be the same as URL1"/>
+		</h:inputText>
+		<h:message for="url2"/>
+		
+		<h:commandButton value="Enter" action="#{spam.enter}"/>
+	</h:panelGrid>
+</h:form>
+
+</h:body></html>
